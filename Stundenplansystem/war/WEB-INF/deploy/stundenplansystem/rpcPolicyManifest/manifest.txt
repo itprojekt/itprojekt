@@ -1,0 +1,2 @@
+# Module stundenplansystem
+# RPC service class, partial path of RPC policy file

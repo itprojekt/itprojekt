@@ -1,0 +1,2 @@
+serviceClass: de.hdm.stundenplansystem.client.AService
+path: E2517040FD3F2297C1C593EBF13F6D75.gwt.rpc
