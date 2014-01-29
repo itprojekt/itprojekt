@@ -25,7 +25,7 @@ public class DBConnection {
 				
 				DriverManager.registerDriver(new AppEngineDriver()); // Create driver from GWT-Package
 				
-				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
+				con = DriverManager.getConnection("jdbc:mysql://feltrin-immobilien.de:3306/test", "itprojekt", "itprojekt123");
 				//con = DriverManager.getConnection("jdbc:google:rdbms://hdm1337:hdmsql/hotelverwaltung", "root", ""); // Create connection with user-credentials
 			} 
 			catch (SQLException e1) { // If an exception appears, ...
