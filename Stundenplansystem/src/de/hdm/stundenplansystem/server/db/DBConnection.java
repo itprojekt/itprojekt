@@ -23,7 +23,7 @@ public class DBConnection {
 		if (con == null) { // If on init no connection established, create one
 			try {
 				
-				DriverManage.registerDriver(new AppEngineDriver()); // Create driver from GWT-Package
+				DriverManager.registerDriver(new AppEngineDriver()); // Create driver from GWT-Package
 				
 				con = DriverManager.getConnection("jdbc:mysql://feltrin-immobilien.de:3306/itprojekt", "itprojekt", "itprojekt123");
 				//con = DriverManager.getConnection("jdbc:google:rdbms://hdm1337:hdmsql/hotelverwaltung", "root", ""); // Create connection with user-credentials
