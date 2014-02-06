@@ -34,6 +34,7 @@ public class CreateDozent extends Showcase {
 	private final FlexTable dozententabelle = new FlexTable();
 
 	private final HorizontalPanel oberesPanel = new HorizontalPanel();
+	private final HorizontalPanel editPanel = new HorizontalPanel();
 
 	private final AServiceAsync ServiceObj = GWT.create(AService.class);
 	private Dozent d;
@@ -51,13 +52,50 @@ public class CreateDozent extends Showcase {
 				int firstRow = 1;
 				for(int i = 0; i< ergebnis.size(); i++) {
 					final Button deleteDozent = new Button("Loeschen");
+					final Button editDozent = new Button("Editieren");
+					final TextBox dataVorname = new TextBox();
+					final TextBox dataNachname = new TextBox();
+					dataVorname.setText(ergebnis.get(i).getVorname());
+					dataNachname.setText(ergebnis.get(i).getNachname());
+					
 														
 					dozententabelle.setText(firstRow, 0, ergebnis.get(i).getVorname());
 					dozententabelle.setText(firstRow, 1, ergebnis.get(i).getNachname());
+					dozententabelle.setWidget(firstRow, 2, editDozent);
 					dozententabelle.setWidget(firstRow, 3, deleteDozent);
+					dozententabelle.setWidget(firstRow, 4, dataVorname);
+					dozententabelle.setWidget(firstRow, 5, dataNachname);
 					firstRow++;
 					final int dID = ergebnis.get(i).getDozentID();
 					
+					
+					//d.setNachname(dataNach.getValue());
+
+					
+					 editDozent.addClickHandler(new ClickHandler() {
+
+						  public void onClick(ClickEvent event) {
+							  	d = new Dozent();
+								d.setEditVorname(dataVorname.getValue());
+								d.setEditNachname(dataNachname.getValue());
+								d.setDozentID(dID);
+							  ServiceObj.updateDozent(d,
+										new AsyncCallback<Void>() {
+											@Override
+											public void onFailure(Throwable caught) {
+												
+
+											}
+
+											@Override
+											public void onSuccess(Void result) {
+												Window.alert("Dozent erfolgreich editiert");
+
+											}
+										});
+						  }
+					 });
+						  
 					 deleteDozent.addClickHandler(new ClickHandler() {
 
 						  public void onClick(ClickEvent event) {
@@ -78,8 +116,44 @@ public class CreateDozent extends Showcase {
 
 						  }
 						  });
+					 //Anfang
 					 
-				}
+				/*	 editDozent.addClickHandler(new ClickHandler() {
+
+						  public void onClick(ClickEvent event) {
+							  
+							/*  ServiceObj.deleteDozent(dID,
+										new AsyncCallback<Void>() {
+											@Override
+											
+											public void onFailure(Throwable caught) {
+												
+
+											}
+
+											@Override
+											public void onSuccess(Void result) {
+												Window.alert("Dozent kann editiert werden");
+
+											}
+											
+										});
+										
+							  final TextBox editVorname = new TextBox();
+							  final TextBox editNachname = new TextBox();
+							  final Button editSpeichern = new Button("Speichern");
+							  
+							 editPanel.add(editVorname);
+							 editPanel.add(editNachname);
+							 editPanel.add(editSpeichern);
+							 
+
+						  }
+						  });*/
+					 
+					 //Ende
+					 
+						  }
 			}
 			@Override
 			public void onFailure(Throwable caught) {
@@ -110,6 +184,7 @@ public class CreateDozent extends Showcase {
 
 		this.add(head_dozentverwalten);
 		this.add(dozententabelle);
+		this.add(editPanel);
 		
 		loadDozentList();
 		

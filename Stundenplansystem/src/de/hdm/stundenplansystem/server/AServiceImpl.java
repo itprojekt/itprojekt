@@ -1,8 +1,10 @@
 package de.hdm.stundenplansystem.server;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
 
 
 
@@ -48,5 +50,16 @@ public class AServiceImpl extends RemoteServiceServlet implements AService {
 public void deleteDozent(int dID) {
 	init(); 
 	dMapper.deleteDozent(dID);
+}
+
+public void updateDozent(Dozent d){
+	init();
+	
+	try {
+		dMapper.updateDozent(d);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 }

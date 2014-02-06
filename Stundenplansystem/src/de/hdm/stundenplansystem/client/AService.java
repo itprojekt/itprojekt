@@ -1,5 +1,6 @@
 package de.hdm.stundenplansystem.client;
 
+
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -15,6 +16,7 @@ public interface AService extends RemoteService {
 	
 	
 	void insertDozent(Dozent d);
+	void updateDozent(Dozent d);
 
 	ArrayList<Dozent> getAllDozents() throws IllegalArgumentException;
 

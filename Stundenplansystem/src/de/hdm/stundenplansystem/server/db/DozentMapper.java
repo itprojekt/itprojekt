@@ -74,8 +74,43 @@ public void deleteDozent(int dID) {
 		e.printStackTrace();
 	}
 }
-}
+
+	//Dozent editieren
+public void updateDozent(Dozent d) throws SQLException {
+	Connection con = DBConnection.connection();
+	try {
+
+		Statement state = con.createStatement();
+		String sqlquery = "UPDATE dozent SET " 
+				+ "vorname= '"
+				+ d.getEditDataVorname() 
+				+ "', " + "nachname= '"
+				+ d.getEditDataNachname() 
+				+"' WHERE DozentID=" 
+				+ d.getDozentID() 
+				+ ";";
+		state.executeUpdate(sqlquery);
+		
 	
+	/*	
+		Statement state = con.createStatement();
+		String sqlquery = "INSERT INTO dozent (vorname, nachname)VALUES ("
+				+ "'"
+				+ d.getEditDataVorname()
+				+ "', '"
+				+ d.getEditDataNachname()
+				+"WHERE DozentID=" + d.getDozentID()
+				+	"') ;";
+		
+		state.executeUpdate(sqlquery);
+		
+	*/	
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
+}
 	
 
 

@@ -6,6 +6,8 @@ public class Dozent extends BusinessObject {
 	private int dozID;
 	private String vorname;
 	private String nachname;
+	private String editVorname;
+	private String editNachname;
 	
 	public int getDozentID() {
 		return dozID;
@@ -30,5 +32,21 @@ public class Dozent extends BusinessObject {
 		nachname = dNachname;
 	}
 	
+	public String getEditDataVorname(){
+		return editVorname;
+	}
+	
+	public void setEditVorname(String dataVorname){
+		editVorname = dataVorname;
+	}
 
+	public String getEditDataNachname(){
+		return editNachname;
+	}
+	
+	public void setEditNachname(String dataNachname){
+		editNachname = dataNachname;
+	}
+		
+	
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 
+
 import de.hdm.stundenplansystem.shared.bo.*;
 
 public interface AServiceAsync {
@@ -19,5 +20,9 @@ public interface AServiceAsync {
 
 
 	void deleteDozent(int dID, AsyncCallback<Void> callback) throws IllegalArgumentException;
+
+
+
+	void updateDozent(Dozent d, AsyncCallback<Void> callback);
 
 }
